@@ -15,7 +15,7 @@ jobs:
     - name: Test executable
       run: ./hello
 
-    - uses: shovon0203/test-action@v0.0.2
+    - uses: shovon0203/test-action@v0.0.3
       with:
         my-input: 'world'
       env:
