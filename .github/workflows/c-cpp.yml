@@ -14,3 +14,9 @@ jobs:
       run: make
     - name: Test executable
       run: ./hello
+
+    - uses: actions/checkout@v2
+    - name: Run my Docker action
+      uses: shovon0203/test-action@v0.1
+      with:
+        my-input: 'world'
