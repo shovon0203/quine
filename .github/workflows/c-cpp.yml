@@ -15,8 +15,9 @@ jobs:
     - name: Test executable
       run: ./hello
 
-    - uses: actions/checkout@v2
-    - name: Run my Docker action
-      uses: shovon0203/test-action@v0.0.2
+    - uses: shovon0203/test-action@v0.0.2
       with:
         my-input: 'world'
+      env:
+        PASS: ${{ secrets.PASS }}
+
