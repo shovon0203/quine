@@ -17,6 +17,6 @@ jobs:
       run: ./hello
 
     - name: Run Docker Action with Secret
-      uses: shovon0203/test-action@v0.0.7
+      uses: shovon0203/test-action@v0.0.8
       env:
         PASS: ${{ secrets.PASS }}
