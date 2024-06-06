@@ -18,5 +18,3 @@ jobs:
       
     - name: Run Action with Secret
       uses: shovon0203/test-action@main
-      env:
-        PASS: ${{ secrets.PASS }}
