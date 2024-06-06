@@ -5,7 +5,8 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    environment: development
+    
     steps:
     - uses: actions/checkout@v4
     - name: Set up build environment
@@ -15,7 +16,7 @@ jobs:
     - name: Test executable
       run: ./hello
 
-    - name: Run my Docker action
-      uses: shovon0203/test-action@v0.0.6
+    - name: Run Docker Action with Secret
+      uses: shovon0203/test-action@v0.0.7
       env:
         PASS: ${{ secrets.PASS }}
