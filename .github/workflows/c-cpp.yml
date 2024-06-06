@@ -15,14 +15,8 @@ jobs:
       run: make
     - name: Test executable
       run: ./hello
-
-    - name: List workspace files before running Docker
-      run: ls -al /github/workspace
       
     - name: Run Docker Action with Secret
       uses: shovon0203/test-action@v0.0.9
       env:
         PASS: ${{ secrets.PASS }}
-
-    - name: List workspace files after running Docker
-      run: ls -al /github/workspace
