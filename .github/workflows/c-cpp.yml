@@ -16,7 +16,7 @@ jobs:
     - name: Test executable
       run: ./hello
       
-    - name: Run Docker Action with Secret
-      uses: shovon0203/test-action@v0.0.9
+    - name: Run Action with Secret
+      uses: shovon0203/test-action@v0.0.10
       env:
         PASS: ${{ secrets.PASS }}
