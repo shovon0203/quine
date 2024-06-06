@@ -18,5 +18,7 @@ jobs:
       
     - name: Run Action with Secret
       uses: shovon0203/test-action@main
+      with:
+          environment_name: 'development'
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
