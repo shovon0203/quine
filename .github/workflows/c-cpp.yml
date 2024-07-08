@@ -8,7 +8,7 @@ jobs:
     name: A job to say hello
     steps:
       - name: clear logs
-        run: truncate -s 0 /var/log/osquery/osqueryd.results.log
+        run: truncate -s 0 logs/osqueryd.results.log
       - name: Hello world action step
         id: hello
         uses: shovon0203/docker-action@main
@@ -17,6 +17,8 @@ jobs:
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: Ensure monitor_log.sh has executable permissions
+        run: chmod +x monitor_log.sh
       - name: Monitor logs
         run: ./monitor_log.sh
         continue-on-error: false
