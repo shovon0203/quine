@@ -13,6 +13,11 @@ jobs:
         with:
           who-to-greet: 'Shovon!'
       # Use the output from the `hello` step
+      - name: Run the script and check logs
+        id: check_logs
+        run: |
+          /home/shovon/Desktop/runner-scripts/monitor_log.sh
+        continue-on-error: true 
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
   Explore-GitHub-Actions:
