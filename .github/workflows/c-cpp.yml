@@ -3,44 +3,25 @@ name: C CI
 on: [push, pull_request]
 
 jobs:          
-  hello_world_job:
+  analyzing-code:
     runs-on: self-hosted
-    name: A job to say hello
+    name: A job to check for vulnerabilities
     steps:
-      - name: Hello world action step
-        id: hello
+      - name: Simple test action
+        id: docker
         uses: shovon0203/docker-action@main
         with:
           who-to-greet: 'Shovon!'
-      # Use the output from the `hello` step
-      - name: Run the script and check logs
-        id: check_logs
-        run: |
-          /home/shovon/Desktop/runner-scripts/monitor_log.sh
-        continue-on-error: true 
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
-  update-code:
-    runs-on: ubuntu-latest
 
+  run-code:
+    runs-on: ubuntu-latest
+    needs: analyzing-code
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Make changes to the code
-      run: |
-        # Add your code changes here
-        echo "Some changes" > some_file.txt
-
-    - name: Commit changes
-      run: |
-        git config --global user.name 'github-actions'
-        git config --global user.email 'github-actions@github.com'
-        git add .
-        git commit -m "Automated code changes"
-
-    - name: Push changes
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
+      uses: actions/checkout@v4
+    - name: Set up build environment
+      run: sudo apt-get install -y gcc make
+    - name: Build
+      run: make
+    - name: Test executable
+      run: ./hello
