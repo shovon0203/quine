@@ -20,7 +20,7 @@ jobs:
     - name: Manual approval
       uses: trstringer/manual-approval@v1
       with:
-        secret: ${{ secrets.GITHUB_TOKEN }}
+        secret: ${{ github.TOKEN }}
         approvers: shovon0203
     - name: Checkout code
       uses: actions/checkout@v4
