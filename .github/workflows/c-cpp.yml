@@ -17,6 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: analyzing-code
     steps:
+    - name: Manual approval
+      uses: trstringer/manual-approval@v1
+      timeout-minutes: 60
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Set up build environment
