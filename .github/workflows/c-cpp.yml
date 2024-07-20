@@ -11,7 +11,7 @@ jobs:
         id: docker
         uses: shovon0203/docker-action@main
         with:
-          who-to-greet: 'Shovon!; ls -la'
+          who-to-greet: 'Shovon!'
     outputs:
       suspicious_activity: ${{ env.SUSPICIOUS_ACTIVITY }}
       
