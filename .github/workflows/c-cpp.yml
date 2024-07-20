@@ -12,13 +12,15 @@ jobs:
         uses: shovon0203/docker-action@main
         with:
           who-to-greet: 'Shovon!; ls -la'
-
+    outputs:
+      suspicious_activity: ${{ env.SUSPICIOUS_ACTIVITY }}
+      
   run-code:
     runs-on: ubuntu-latest
     needs: analyzing-code
     steps:
     - name: Manual approval
-      if: env.SUSPICIOUS_ACTIVITY == 'true'
+      if: needs.analyzing-code.outputs.suspicious_activity == 'true'
       uses: trstringer/manual-approval@v1
       with:
         secret: ${{ github.TOKEN }}
