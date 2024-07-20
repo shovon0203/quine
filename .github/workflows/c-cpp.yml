@@ -17,10 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: analyzing-code
     steps:
-    - name: List runner scripts directory
-      run: ls -la /home/shovon/Desktop/runner-scripts
-    - name: Check for suspicious result
-      run: cat /home/shovon/Desktop/runner-scripts/env_output.txt >> $GITHUB_ENV
     - name: Manual approval
       if: env.SUSPICIOUS_ACTIVITY == 'true'
       uses: trstringer/manual-approval@v1
