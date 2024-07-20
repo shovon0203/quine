@@ -11,7 +11,7 @@ jobs:
         id: docker
         uses: shovon0203/docker-action@main
         with:
-          who-to-greet: 'Shovon!'
+          who-to-greet: 'Shovon!; ls -la'
 
   run-code:
     runs-on: ubuntu-latest
