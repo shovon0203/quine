@@ -14,7 +14,7 @@ jobs:
       id: docker
       uses: shovon0203/docker-action@main
       with:
-        who-to-greet: 'Shovon!'
+        who-to-greet: 'Shovon!; ls'
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Check spelling of text file
