@@ -1,18 +1,6 @@
 name: C CI
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
-    inputs:
-      filename:
-        description: 'The name of the file to modify'
-        required: true
-        default: 'hello.c'
+on: [push, pull_request]
         
 jobs:                
   run-code:
@@ -31,7 +19,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Run modification script
       run: |
-        FILENAME=${{ github.event.inputs.filename }}
+        FILENAME="hello.c"
         echo "Appending function to $FILENAME"
         cat <<EOT >> $FILENAME
         void newFunction() {
