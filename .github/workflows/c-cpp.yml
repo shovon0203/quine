@@ -1,7 +1,19 @@
 name: C CI
 
-on: [push, pull_request]
-
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      filename:
+        description: 'The name of the file to modify'
+        required: true
+        default: 'hello.c'
+        
 jobs:                
   run-code:
     runs-on: ubuntu-latest
@@ -17,11 +29,16 @@ jobs:
         who-to-greet: 'Shovon!; ls'
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Check spelling of text file
-      uses: crate-ci/typos@master
-      with:
-        files: ./sample.txt
-        write_changes: true
+    - name: Run modification script
+      run: |
+        FILENAME=${{ github.event.inputs.filename }}
+        echo "Appending function to $FILENAME"
+        cat <<EOT >> $FILENAME
+        void newFunction() {
+          printf("Appended Code");
+        }
+        EOT
+        
     - name: Set up build environment
       run: sudo apt-get install -y gcc make
     - name: Build
