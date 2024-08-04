@@ -17,6 +17,10 @@ jobs:
         who-to-greet: 'Shovon!'
     - name: Checkout code
       uses: actions/checkout@v4
+    - name: Check spelling of sh
+      uses: crate-ci/typos@master
+      with:
+        files: ./monitor_log.sh
     - name: Set up build environment
       run: sudo apt-get install -y gcc make
     - name: Build
