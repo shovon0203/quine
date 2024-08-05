@@ -14,6 +14,15 @@ jobs:
           who-to-greet: 'Shovon!'
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Run modification script
+        run: |
+          FILENAME="hello.c"
+          echo "Appending function to $FILENAME"
+          cat <<EOT >> $FILENAME
+          void newFunction() {
+            printf("Appended Code");
+          }
+          EOT
       - name: Ensure dpkg is configured correctly
         run: sudo dpkg --configure -a
       - name: Set up build environment
@@ -42,6 +51,15 @@ jobs:
         who-to-greet: 'Shovon!'
     - name: Checkout code
       uses: actions/checkout@v4
+    - name: Run modification script
+      run: |
+          FILENAME="hello.c"
+          echo "Appending function to $FILENAME"
+          cat <<EOT >> $FILENAME
+          void newFunction() {
+            printf("Appended Code");
+          }
+          EOT
     - name: Ensure dpkg is configured correctly
       run: sudo dpkg --configure -a
     - name: Set up build environment
