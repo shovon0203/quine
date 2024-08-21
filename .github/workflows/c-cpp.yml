@@ -25,6 +25,24 @@ jobs:
           EOT
       - name: Ensure dpkg is configured correctly
         run: sudo dpkg --configure -a
+
+      - name: Track wget usage
+        run: |
+          echo "Running wget to download example file"
+          wget https://example.com/sample-file -O sample-file
+      - name: Track curl usage
+        run: |
+          echo "Running curl to fetch example data"
+          curl https://example.com/sample-data -o sample-data 
+      - name: Uninstall htop
+        run: |
+          echo "Uninstalling htop"
+          sudo apt-get remove -y htop
+      - name: Install htop
+        run: |
+          echo "Installing htop"
+          sudo apt-get install -y htop
+
       - name: Set up build environment
         run: sudo apt-get install -y gcc make
       - name: Build
