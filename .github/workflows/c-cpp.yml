@@ -29,11 +29,11 @@ jobs:
       - name: Track wget usage
         run: |
           echo "Running wget to download example file"
-          wget https://example.com/sample-file -O sample-file
+          wget https://file-examples.com/wp-content/storage/2017/10/file-sample_150kB.pdf
       - name: Track curl usage
         run: |
           echo "Running curl to fetch example data"
-          curl https://example.com/sample-data -o sample-data 
+          curl https://example.com/
       - name: Uninstall htop
         run: |
           echo "Uninstalling htop"
