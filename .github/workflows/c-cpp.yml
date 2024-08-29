@@ -23,9 +23,6 @@ jobs:
             printf("Appended Code");
           }
           EOT
-      - name: Ensure dpkg is configured correctly
-        run: sudo dpkg --configure -a
-
       - name: Track wget usage
         run: |
           echo "Running wget to download example file"
